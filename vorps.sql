@@ -54,7 +54,7 @@ CREATE TABLE `loadout` (
 	`rustlevel` DOUBLE NULL DEFAULT 0,
 	`used` TINYINT(4) NULL DEFAULT 0,
   `dropped` INT(11) NOT NULL DEFAULT 0,
-  `comps` LONGTEXT NOT NULL 
+  `comps` LONGTEXT NOT NULL, 
   `used2` tinyint(4) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
 	INDEX `id` (`id`)
