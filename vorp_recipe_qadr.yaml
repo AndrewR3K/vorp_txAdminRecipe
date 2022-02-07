@@ -7,7 +7,7 @@ description: Bu tarif Vorpcore için abdulkadir aktaş tarafından hazırlanmı�
 tasks:
 #  Download Base Files
   - action: download_github
-    src: https://github.com/abdulkadiraktas/vorp_txAdminRecipe
+    src: https://github.com/VanTheNoble/vorp_txAdminRecipe
     ref: main
     dest: ./tmp/vorp_txAdminRecipe
   
