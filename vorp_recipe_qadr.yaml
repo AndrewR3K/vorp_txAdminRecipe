@@ -91,7 +91,7 @@ tasks:
     dest: ./tmp/VORP-Inventory 
 
   - action: move_path
-    src: ./tmp/VORP-Inventory/VORP-Inventory[Client-Server]/Build/vorp_inventory/
+    src: ./tmp/VORP-Inventory/VORP-Inventory/Build/vorp_inventory/
     dest: ./resources/[vorp]/vorp_inventory    
 
     
