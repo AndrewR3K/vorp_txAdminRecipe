@@ -31,22 +31,18 @@ tasks:
     dest: ./resources/[cfx-default]    
     
   - action: download_github
-    src: https://github.com/Duguayster/ghmattimysql
+    src: https://github.com/VORPCORE/ghmattimysql-oxmysql
     ref: main
     dest: ./tmp/ghmattimysql
 
   - action: move_path
-    src: ./tmp/ghmattimysql/ghmattimysql
+    src: ./tmp/ghmattimysql/ghmattimysql-oxmysql
     dest: ./resources/[sql]/ghmattimysql    
 
 # Vorp Core
   - action: download_github
-    src: https://github.com/VORPCORE/VORP-Core
+    src: https://github.com/VORPCORE/vorp-core-lua
     ref: master
-    dest: ./tmp/VORP-Core
-    
-  - action: move_path
-    src: ./tmp/VORP-Core/build/vorp_core
     dest: ./resources/[vorp]/vorp_core
   
 # Vorp Inputs
@@ -73,18 +69,6 @@ tasks:
     dest: ./resources/[vorp]/vorp_character    
 
 # Vorp Inventory
-  #- action: download_file
-  #  path: ./tmp/vorp_inventory.zip
-  #  url: https://github.com/VORPCORE/VORP-Inventory/releases/download/v1.0.8-nulls.3/vorp_inventory.zip
-
-  #- action: unzip
-  #  dest: ./tmp/vorp_inventory
-  #  src: ./tmp/vorp_inventory.zip    
-
-  #- action: move_path
-  #  src: ./tmp/vorp_inventory/vorp_inventory
-  #  dest: ./resources/[vorp]/vorp_inventory
-  
   - action: download_github
     src: https://github.com/VORPCORE/VORP-Inventory
     ref: master
@@ -93,8 +77,6 @@ tasks:
   - action: move_path
     src: ./tmp/VORP-Inventory/VORP-Inventory/Build/vorp_inventory/
     dest: ./resources/[vorp]/vorp_inventory    
-
-    
     
 # Vorp Metabolism
   - action: download_github
@@ -147,14 +129,10 @@ tasks:
     dest: ./resources/[vorp]/vorp_stores
     
 # Vorp WeaponStore  This resource not working.
-  #- action: download_github
-  #  src: https://github.com/VORPCORE/VORP-WeaponStore
-  #  ref: master
-  #  dest: ./tmp/VORP-WeaponStore
-
-  #- action: move_path
-  #  src: ./tmp/VORP-WeaponStore/VORP-WeaponStore[Client-Server]/build/vorp_weaponstore/
-  #  dest: ./resources/[vorp]/vorp_weaponstore
+  - action: download_github
+    src: https://github.com/VORPCORE/vorp_weaponsv2
+    ref: master
+    dest: ./resources/[vorp]/vorp_weaponsv2
     
 # Vorp Banks
   - action: download_github
@@ -216,6 +194,54 @@ tasks:
     src: ./tmp/VORP-WoodCutter/VORP-WoodCutter[Server-Client]/build/vorp_woodcutter/
     dest: ./resources/[vorp]/vorp_woodcutter
     
+# Vorp Fishing
+ - action: download_github
+    src: https://github.com/VORPCORE/vorp_fishing-lua.git
+    ref: master
+    dest: ./tmp/VORP-Fishing
+
+  - action: move_path
+    src: ./tmp/VORP-Fishing/VORP-Fishing
+    dest: ./resources/[vorp]/vorp_fishing
+    
+# Vorp Police
+ - action: download_github
+    src: https://github.com/VORPCORE/vorp_ml_policejob
+    ref: master
+    dest: ./tmp/VORP-police
+
+  - action: move_path
+    src: ./tmp/VORP-police/vorp_ml_policejob
+    dest: ./resources/[vorp]/vorp_ml_policejob
+    
+#Vorp Hunting
+  - action: download_github
+    src: https://github.com/VORPCORE/VORP-Hunting
+    ref: master
+    dest: ./tmp/VORP-Hunting
+
+  - action: move_path
+    src: ./tmp/VORP-Hunting/vorp_hunting
+    dest: ./resources/[vorp]/vorp_hunting
+    
+# Vorp Traffic
+ - action: download_github
+    src: https://github.com/VORPCORE/Vorp_walkanim
+    ref: master
+    dest: ./resources/[vorp]/vorp_traffic
+
+# Vorp walkanim
+ - action: download_github
+    src: https://github.com/VORPCORE/vorp_walkanim
+    ref: master
+    dest: ./resources/[vorp]/vorp_walkanim
+
+# Vorp bossmanager
+ - action: download_github
+    src: https://github.com/VORPCORE/vorp_bossmanager
+    ref: master
+    dest: ./resources/[vorp]/vorp_bossmanager
+
 # Edit Langs to EN
   
   
@@ -239,13 +265,6 @@ tasks:
   - action: move_path
     src: ./resources/[vorp]/vorp_cinema/Config_En.json
     dest: ./resources/[vorp]/vorp_cinema/Config.json
-  
-  #- action: remove_path
-  #  path: ./resources/[vorp]/vorp_weaponstore/Config.json
-
-  #- action: move_path
-  #  src: ./resources/[vorp]/vorp_weaponstore/Config_En.json
-  #  dest: ./resources/[vorp]/vorp_weaponstore/Config.json
   
   - action: remove_path
     path: ./resources/[vorp]/vorp_stables/Config.json
