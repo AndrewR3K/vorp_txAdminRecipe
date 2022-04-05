@@ -58,13 +58,15 @@ CREATE TABLE `loadout` (
 	`rustlevel` DOUBLE NULL DEFAULT 0,
 	`used` TINYINT(4) NULL DEFAULT 0,
   `dropped` INT(11) NOT NULL DEFAULT 0,
-  `comps` LONGTEXT NOT NULL DEFAULT '{}', 
+  `comps` LONGTEXT NOT NULL, 
   `used2` tinyint(4) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
 	INDEX `id` (`id`)
 )
 COLLATE='utf8mb4_general_ci'
 ENGINE=InnoDB;
+
+ALTER TABLE `loadout` ADD COLUMN `comps` LONGTEXT NOT NULL DEFAULT '{}';
 
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE `items` (
