@@ -66,8 +66,6 @@ CREATE TABLE `loadout` (
 COLLATE='utf8mb4_general_ci'
 ENGINE=InnoDB;
 
-ALTER TABLE `loadout` ADD COLUMN `comps` LONGTEXT NOT NULL DEFAULT '{}';
-
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE `items` (
 	`item` VARCHAR(50) NOT NULL,
