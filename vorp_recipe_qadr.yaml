@@ -29,8 +29,14 @@ tasks:
   - action: download_github
     src: https://github.com/citizenfx/cfx-server-data
     subpath: resources
-    dest: ./resources/[cfx-default]    
-    
+    dest: ./resources/[cfx-default]
+
+# Interiors - Interior fixes 
+  - action: download_github
+    src: https://github.com/MissBehavin/interiors
+    ref: master
+    dest: ./resources/[cfx-default]/[gameplay]/interiors
+
 # ghmattimysql - Utilizing oxmysql port for better performance
   - action: download_github
     src: https://github.com/VORPCORE/ghmattimysql-oxmysql
