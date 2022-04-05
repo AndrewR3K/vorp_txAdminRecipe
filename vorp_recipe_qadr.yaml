@@ -2,7 +2,7 @@ $engine: 3
 name: Vorpcore
 version: 1.1.0
 author: Abdulkadir Aktaş
-description: Bu tarif Vorpcore için abdulkadir aktaş tarafından hazırlanmıştır.
+description: Bu tarif Vorpcore için abdulkadir aktaş tarafından hazırlanmıştır. (This recipe was prepared for Vorpcore by abdulkadir aktaş + contributers)
 
 tasks:
 #  Download Base Files
@@ -195,7 +195,7 @@ tasks:
     dest: ./resources/[vorp]/vorp_woodcutter
     
 # Vorp Fishing
- - action: download_github
+  - action: download_github
     src: https://github.com/VORPCORE/vorp_fishing-lua.git
     ref: master
     dest: ./tmp/VORP-Fishing
@@ -205,7 +205,7 @@ tasks:
     dest: ./resources/[vorp]/vorp_fishing
     
 # Vorp Police
- - action: download_github
+  - action: download_github
     src: https://github.com/VORPCORE/vorp_ml_policejob
     ref: master
     dest: ./tmp/VORP-police
@@ -225,19 +225,19 @@ tasks:
     dest: ./resources/[vorp]/vorp_hunting
     
 # Vorp Traffic
- - action: download_github
+  - action: download_github
     src: https://github.com/VORPCORE/Vorp_walkanim
     ref: master
     dest: ./resources/[vorp]/vorp_traffic
 
 # Vorp walkanim
- - action: download_github
+  - action: download_github
     src: https://github.com/VORPCORE/vorp_walkanim
     ref: master
     dest: ./resources/[vorp]/vorp_walkanim
 
 # Vorp bossmanager
- - action: download_github
+  - action: download_github
     src: https://github.com/VORPCORE/vorp_bossmanager
     ref: master
     dest: ./resources/[vorp]/vorp_bossmanager
