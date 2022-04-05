@@ -56,7 +56,7 @@ tasks:
     dest: ./tmp/VORP-Inputs    
 
   - action: move_path
-    src: ./tmp/VORP-Inputs/VORP-Inputs[Client-Server]/build/vorp_inputs
+    src: ./tmp/VORP-Inputs/VORP-Inputs/build/vorp_inputs
     dest: ./resources/[vorp]/vorp_inputs    
 
 # Vorp characters
