@@ -30,20 +30,27 @@ tasks:
     subpath: resources
     dest: ./resources/[cfx-default]    
     
+# ghmattimysql - Utilizing oxmysql port for better performance
   - action: download_github
     src: https://github.com/VORPCORE/ghmattimysql-oxmysql
     ref: main
-    dest: ./tmp/ghmattimysql
-
-  - action: move_path
-    src: ./tmp/ghmattimysql/ghmattimysql-oxmysql
     dest: ./resources/[sql]/ghmattimysql    
 
-# Vorp Core
+# Vorp Core - New maintained Lua based core
   - action: download_github
     src: https://github.com/VORPCORE/vorp-core-lua
-    ref: master
+    ref: main
     dest: ./resources/[vorp]/vorp_core
+
+# Vorp Core - older c# based core. - Uncomment around line 309 if you want to use this core
+#  - action: download_github
+#    src: https://github.com/VORPCORE/VORP-Core
+#    ref: master
+#    dest: ./tmp/VORP-Core
+    
+#  - action: move_path
+#    src: ./tmp/VORP-Core/build/vorp_core
+#    dest: ./resources/[vorp]/vorp_core
   
 # Vorp Inputs
   - action: download_github
@@ -131,7 +138,7 @@ tasks:
 # Vorp WeaponStore  This resource not working.
   - action: download_github
     src: https://github.com/VORPCORE/vorp_weaponsv2
-    ref: master
+    ref: main
     dest: ./resources/[vorp]/vorp_weaponsv2
     
 # Vorp Banks
@@ -196,18 +203,14 @@ tasks:
     
 # Vorp Fishing
   - action: download_github
-    src: https://github.com/VORPCORE/vorp_fishing-lua.git
-    ref: master
-    dest: ./tmp/VORP-Fishing
-
-  - action: move_path
-    src: ./tmp/VORP-Fishing/VORP-Fishing
+    src: https://github.com/VORPCORE/vorp_fishing-lua
+    ref: main
     dest: ./resources/[vorp]/vorp_fishing
     
 # Vorp Police
   - action: download_github
     src: https://github.com/VORPCORE/vorp_ml_policejob
-    ref: master
+    ref: main
     dest: ./tmp/VORP-police
 
   - action: move_path
@@ -217,7 +220,7 @@ tasks:
 #Vorp Hunting
   - action: download_github
     src: https://github.com/VORPCORE/VORP-Hunting
-    ref: master
+    ref: main
     dest: ./tmp/VORP-Hunting
 
   - action: move_path
@@ -226,20 +229,20 @@ tasks:
     
 # Vorp Traffic
   - action: download_github
-    src: https://github.com/VORPCORE/Vorp_walkanim
-    ref: master
+    src: https://github.com/VORPCORE/Vorp_traffic
+    ref: main
     dest: ./resources/[vorp]/vorp_traffic
 
 # Vorp walkanim
   - action: download_github
     src: https://github.com/VORPCORE/vorp_walkanim
-    ref: master
+    ref: main
     dest: ./resources/[vorp]/vorp_walkanim
 
 # Vorp bossmanager
   - action: download_github
     src: https://github.com/VORPCORE/vorp_bossmanager
-    ref: master
+    ref: main
     dest: ./resources/[vorp]/vorp_bossmanager
 
 # Edit Langs to EN
@@ -293,21 +296,22 @@ tasks:
     search: '"Es"'
     replace: '"En"'
 
-  - action: replace_string
-    file: ./resources/[vorp]/vorp_core/Config.json
-    search: '"Es"'
-    replace: '"En"'
+# Not needed for vorp_core Lua, it is defaulted to [en]
+# - action: replace_string
+#   file: ./resources/[vorp]/vorp_core/Config.json
+#   search: '"Es"'
+#   replace: '"En"'
   
   - action: replace_string
     file: ./resources/[vorp]/vorp_woodcutter/Config.json
     search: '"Es"'
     replace: '"En"'
   
-# Edit white list
-  - action: replace_string
-    file: ./resources/[vorp]/vorp_core/Config.json
-    search: '"Whitelist": true'
-    replace: '"Whitelist": false'
+# Edit white list - Lua Core Whitelist not working, use fxserver whitelist. Or utilize the older c# based core.
+#  - action: replace_string
+#    file: ./resources/[vorp]/vorp_core/Config.json
+#    search: '"Whitelist": true'
+#    replace: '"Whitelist": false'
 
 # Edit fxmanifest
   - action: replace_string
