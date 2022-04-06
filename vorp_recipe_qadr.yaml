@@ -252,8 +252,79 @@ tasks:
     ref: main
     dest: ./resources/[vorp]/vorp_bossmanager
 
+# Bulgar_doorlocks_vorp
+  - action: download_github
+    src: https://github.com/NeoGaming22/Bulgar_doorlocks_vorp
+    subpath: bulgar_doorlocks_vorp
+    dest: ./resources/[other]/bulgar_doorlocks_vorp
+
+# wcrp_police_medical/poke_medicjob Medic Job
+  - action: download_github
+    src: https://github.com/NeoGaming22/wcrp_police_medical
+    subpath: wcrp_police_medical
+    dest: ./resources/[other]/poke_medicjob
+
+# SYN Scoreboard
+  - action: download_github
+    src: https://github.com/NeoGaming22/syn_scoreboard
+    subpath: syn_scoreboard
+    dest: ./resources/[other]/syn_scoreboard
+
+# Safe Robbery
+  - action: download_github
+    src: https://github.com/NeoGaming22/gorp_saferobbery
+    subpath: gorp_saferobbery
+    dest: ./resources/[other]/gorp_saferobbery
+
+# Hunting Wagons
+  - action: download_github
+    src: https://github.com/NeoGaming22/hunting_wagon
+    subpath: hunterwagon
+    dest: ./resources/[other]/huntingwagon
+
+# Injury
+  - action: download_github
+    src: https://github.com/NeoGaming22/injury
+    subpath: injury
+    dest: ./resources/[other]/injury
+
+# Jail Prison
+  - action: download_github
+    src: https://github.com/NeoGaming22/Jail_Pent
+    subpath: jailpent
+    dest: ./resources/[other]/poke_adminjail
+
+# Item Interaction
+  - action: download_github
+    src: https://github.com/NeoGaming22/wcrp_Interactions
+    subpath: wcrp_interaction
+    dest: ./resources/[other]/wcrp_interaction
+
+# Redm Bathing
+  - action: download_github
+    src: https://github.com/NeoGaming22/redm_bathing
+    subpath: redm_bathing
+    dest: ./resources/[other]/redm_bathing
+
+# Redm Police Fines
+  - action: download_github
+    src: https://github.com/NeoGaming22/twprp_policefine
+    subpath: twprp_policefine
+    dest: ./resources/[other]/twprp_policefine
+
+# Valentine General Store Robbery
+  - action: download_github
+    src: https://github.com/NeoGaming22/wcrp_valgeneralrobbery
+    subpath: wcrp_valgeneralrobbery
+    dest: ./resources/[other]/Perry_FortWallace
+
+# Paychecks
+  - action: download_github
+    src: https://github.com/NeoGaming22/vorp_core_paycheck
+    subpath: vorp_paycheck
+    dest: ./resources/[other]/vorp_paycheck
+
 # Edit Langs to EN
-  
   
   - action: remove_path
     path: ./resources/[vorp]/vorp_postman/Config.json

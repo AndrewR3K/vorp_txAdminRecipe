@@ -187,14 +187,37 @@ CREATE TABLE `rooms`  (
 
 SET FOREIGN_KEY_CHECKS = 1;
 
+-- Admin Jail Table
+CREATE TABLE IF NOT EXISTS `user_jail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(100) NOT NULL DEFAULT '0',
+  `name` varchar(100) NOT NULL DEFAULT '0',
+  `admin_name` varchar(100) NOT NULL DEFAULT '0',
+  `admin_identifier` varchar(100) NOT NULL DEFAULT '0',
+  `time` varchar(100) NOT NULL DEFAULT '0',
+  `time_s` varchar(100) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Job Manager Table
+CREATE TABLE `jobmanager` (
+  `identifier` varchar(50) NOT NULL,
+  `charidentifier` int(11) NOT NULL,
+  `jobname` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `jobmanager`
+  ADD PRIMARY KEY (`identifier`,`charidentifier`);
+COMMIT;
+
 -- Insert data for items
 INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES
-('consumable_coffee', 'Cafe', 5, 1, 'item_standard', 1),
-('consumable_haycube', 'Heno', 50, 1, 'item_standard', 1),
-('consumable_kidneybeans_can', 'Lata de alubias', 5, 1, 'item_standard', 1),
-('consumable_medicine', 'Medicina', 3, 1, 'item_standard', 1),
-('consumable_peach', 'Melocoton', 5, 1, 'item_standard', 1),
-('consumable_salmon_can', 'Lata de Salmon', 5, 1, 'item_standard', 1),
+('consumable_coffee', 'Coffee', 5, 1, 'item_standard', 1),
+('consumable_haycube', 'Hay', 50, 1, 'item_standard', 1),
+('consumable_kidneybeans_can', 'Can of Kidneybeans', 5, 1, 'item_standard', 1),
+('consumable_medicine', 'Medicine', 3, 1, 'item_standard', 1),
+('consumable_peach', 'Peach', 5, 1, 'item_standard', 1),
+('consumable_salmon_can', 'Can of Salmon', 5, 1, 'item_standard', 1),
 ('ammo_bullet_pistol', 'Pistol Ammo', 10, 1, 'item_standard', 1),
 ('ammo_bullet_revolver', 'Revolver Ammo', 10, 1, 'item_standard', 1),
 ('ammo_bullet_rifle', 'Rifle Ammo', 1, 1, 'item_standard', 1),
@@ -246,57 +269,64 @@ INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) V
 ('ammovolmolotov', 'Volatile Molotov Ammo', 10, 1, 'item_standard', 1);
 
 -- Vorp Fishing - items
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_baitBread01x', 'Bread Bait', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_baitCorn01x', 'Corn Bait', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_baitCheese01x', 'Cheese Bait', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_baitWorm01x', 'Worm Bait', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_baitCricket01x', 'Cricket Bait', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_crawdad01x', 'Crawfish Bait', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_finishedragonfly01x', 'Dragonfly Lure', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_FinisdFishlure01x', 'Fish Lure', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_finishdcrawd01x', 'Crawfish Lure', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_finishedragonflylegendary01x', 'Legendary Dragonfly Lure', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_finisdfishlurelegendary01x', 'Legendary Fish Lure', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_finishdcrawdlegendary01x', 'Legendary Crawfish Lure', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_lgoc_spinner_v4', 'Spinner V4', '10', '1', 'item_standard', '1');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_lgoc_spinner_v6', 'Spinner V6', '10', '1', 'item_standard', '1');
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_baitBread01x', 'Bread Bait', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_baitCorn01x', 'Corn Bait', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_baitCheese01x', 'Cheese Bait', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_baitWorm01x', 'Worm Bait', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_baitCricket01x', 'Cricket Bait', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_crawdad01x', 'Crawfish Bait', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_finishedragonfly01x', 'Dragonfly Lure', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_FinisdFishlure01x', 'Fish Lure', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_finishdcrawd01x', 'Crawfish Lure', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_finishedragonflylegendary01x', 'Legendary Dragonfly Lure', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_finisdfishlurelegendary01x', 'Legendary Fish Lure', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_finishdcrawdlegendary01x', 'Legendary Crawfish Lure', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_lgoc_spinner_v4', 'Spinner V4', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_lgoc_spinner_v6', 'Spinner V6', 10, 1, 'item_standard', 1);
 
 -- Vorp fishing - fish
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishbluegil_01_ms', 'Blue Gil (Medium)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishbluegil_01_sm', 'Blue Gil (Small)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishbullheadcat_01_ms', 'Bullhead Cat (Medium)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishbullheadcat_01_sm', 'Bullhead Cat (Small)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishchainpickerel_01_ms', 'Chain Pickerel (Medium)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishchainpickerel_01_sm', 'Chain Pickerel (Small)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishchannelcatfish_01_lg', 'Channel Catfish (Large)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishchannelcatfish_01_xl', 'Channel Catfish (Extra Large)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishlakesturgeon_01_lg', 'Lake Sturgeon (Large)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishlargemouthbass_01_lg', 'Large Mouth Bass (Large)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishlargemouthbass_01_ms', 'Large Mouth Bass (Medium)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishlongnosegar_01_lg', 'Long Nose Gar (Large)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishmuskie_01_lg', 'Muskie (Large)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishnorthernpike_01_lg', 'Northern Pike (Large)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishperch_01_ms', 'Perch (Medium)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishperch_01_sm', 'Perch (Small)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishrainbowtrout_01_lg', 'Rainbow Trout (Large)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishrainbowtrout_01_ms', 'Rainbow Trout (Medium)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishredfinpickerel_01_ms', 'Red Fin Pickerel (Medium)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishredfinpickerel_01_sm', 'Red Fin Pickerel (Small)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishrockbass_01_ms', 'Rock Bass (Medium)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishrockbass_01_sm', 'Rock Bass (Small)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishsalmonsockeye_01_lg', 'Salmon Sockeye (Large)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishsalmonsockeye_01_ml', 'Salmon Sockeye (Medium-Large)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishsalmonsockeye_01_ms', 'Salmon Sockeye (Medium)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishsmallmouthbass_01_lg', 'Small Mouth Bass (Large)', '10', '1', 'item_standard', '0');
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishsmallmouthbass_01_ms', 'Small Mouth Bass (Medium)', '10', '1', 'item_standard', '0');
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishbluegil_01_ms', 'Blue Gil (Medium)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishbluegil_01_sm', 'Blue Gil (Small)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishbullheadcat_01_ms', 'Bullhead Cat (Medium)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishbullheadcat_01_sm', 'Bullhead Cat (Small)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishchainpickerel_01_ms', 'Chain Pickerel (Medium)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishchainpickerel_01_sm', 'Chain Pickerel (Small)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishchannelcatfish_01_lg', 'Channel Catfish (Large)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishchannelcatfish_01_xl', 'Channel Catfish (Extra Large)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishlakesturgeon_01_lg', 'Lake Sturgeon (Large)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishlargemouthbass_01_lg', 'Large Mouth Bass (Large)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishlargemouthbass_01_ms', 'Large Mouth Bass (Medium)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishlongnosegar_01_lg', 'Long Nose Gar (Large)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishmuskie_01_lg', 'Muskie (Large)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishnorthernpike_01_lg', 'Northern Pike (Large)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishperch_01_ms', 'Perch (Medium)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishperch_01_sm', 'Perch (Small)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishrainbowtrout_01_lg', 'Rainbow Trout (Large)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishrainbowtrout_01_ms', 'Rainbow Trout (Medium)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishredfinpickerel_01_ms', 'Red Fin Pickerel (Medium)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishredfinpickerel_01_sm', 'Red Fin Pickerel (Small)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishrockbass_01_ms', 'Rock Bass (Medium)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishrockbass_01_sm', 'Rock Bass (Small)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishsalmonsockeye_01_lg', 'Salmon Sockeye (Large)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishsalmonsockeye_01_ml', 'Salmon Sockeye (Medium-Large)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishsalmonsockeye_01_ms', 'Salmon Sockeye (Medium)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishsmallmouthbass_01_lg', 'Small Mouth Bass (Large)', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('a_c_fishsmallmouthbass_01_ms', 'Small Mouth Bass (Medium)', 10, 1, 'item_standard', 0);
 
--- Job Manager Table
-CREATE TABLE `jobmanager` (
-  `identifier` varchar(50) NOT NULL,
-  `charidentifier` int(11) NOT NULL,
-  `jobname` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- Doctor Profession Items
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('bandage', 'Bandage', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('syringe', 'Syringe', 10, 1, 'item_standard', 0);
 
-ALTER TABLE `jobmanager`
-  ADD PRIMARY KEY (`identifier`,`charidentifier`);
-COMMIT;
+-- Add Lockpick for roberies
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_lockpick01x', 'Lockpick', 10, 1, 'item_standard', 1);
+
+--Add Items for Interactions
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_cigarette01x', 'cigarette', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_hairpomadeboardnbx01x', 'hairpomade', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_cigar01x', 'cigar', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_journal01x', 'notebook', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_int_pocketwatch01', 'pocket watch', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_book01x', 'book', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('pipe', 'pipe', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_cs_fan01x', 'fan', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_tobaccotin01x', 'chewing tobacco', 10, 1, 'item_standard', 1);
