@@ -33,6 +33,24 @@ Why go through the painful server setup, when you can use a simple recipe? That'
 - Fixes
 	- Interior fixes
 
+**NEW** Extended Edition
+- Criminals
+	 - Rob Safes
+	 - Rob Valentine General Store
+- Scoreboard
+- Lockable Doors
+- Medical Proffession
+- Police
+	- Jail Commands
+	- Fine Commands
+- Hunting
+	- Hunters Wagon
+- Interactable Items
+- Take a bath!
+- Scheduled Paychecks
+- Injuries
+
+
 ## Dependencies
 -   Windows or Linux (Ubuntu/Debian recommended)
 -   **Highly Recommended -**  [Git  1.9k](https://git-scm.com/downloads)  for correct installation
