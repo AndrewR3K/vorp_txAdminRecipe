@@ -321,12 +321,14 @@ INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) V
 INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_lockpick01x', 'Lockpick', 10, 1, 'item_standard', 1);
 
 --Add Items for Interactions
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_cigarette01x', 'cigarette', 10, 1, 'item_standard', 1);
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_hairpomadeboardnbx01x', 'hairpomade', 10, 1, 'item_standard', 1);
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_cigar01x', 'cigar', 10, 1, 'item_standard', 1);
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_journal01x', 'notebook', 10, 1, 'item_standard', 0);
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_int_pocketwatch01', 'pocket watch', 10, 1, 'item_standard', 0);
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_book01x', 'book', 10, 1, 'item_standard', 0);
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('cigarette', 'Cigarette', 20, 1, 'item_standard', 0);
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('cigar', 'Cigar', 10, 1, 'item_standard', 1);
+
+
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('hairpomade', 'Hair Pomade', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('notebook', 'Notebook', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('pocketwatch', 'pocket watch', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('book', 'book', 10, 1, 'item_standard', 0);
 INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('pipe', 'pipe', 10, 1, 'item_standard', 0);
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_cs_fan01x', 'fan', 10, 1, 'item_standard', 0);
-INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_tobaccotin01x', 'chewing tobacco', 10, 1, 'item_standard', 1);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('fan', 'fan', 10, 1, 'item_standard', 0);
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('chewingtobacco', 'chewing tobacco', 10, 1, 'item_standard', 1);
