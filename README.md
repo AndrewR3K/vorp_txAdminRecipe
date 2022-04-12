@@ -1,4 +1,4 @@
-# vorp_txAdminRecipe
+![vorp_txAdminRecipe](https://i.gyazo.com/a1b630125c813f86802c09a104158e6d.png)
 > A full fledge [txAdmin](https://txadm.in/) recipe for [Vorp Core](http://docs.vorpcore.com:3000/)
 
 Why go through the painful server setup, when you can use a simple recipe? That's what we thought as well! Hence vorp_txAdminRecipe was born. We have brought together all the officially supported Vorp Core scripts, along with some best practices built in.
