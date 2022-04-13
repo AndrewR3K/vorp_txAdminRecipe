@@ -320,7 +320,7 @@ INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) V
 -- Add Lockpick for roberies
 INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('p_lockpick01x', 'Lockpick', 10, 1, 'item_standard', 1);
 
---Add Items for Interactions
+-- Add Items for Interactions
 INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('cigarette', 'Cigarette', 20, 1, 'item_standard', 0);
 INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('cigar', 'Cigar', 10, 1, 'item_standard', 1);
 INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('hairpomade', 'Hair Pomade', 10, 1, 'item_standard', 1);
